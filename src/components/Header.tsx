@@ -28,7 +28,7 @@ export default function Header() {
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-white/95 backdrop-blur-lg border-b border-light-gray"
+            ? "glass-strong"
             : "bg-transparent"
         }`}
         initial={{ y: -100 }}
@@ -40,9 +40,10 @@ export default function Header() {
             {/* Logo */}
             <a href="#" className="relative z-10">
               <span
-                className={`text-[22px] font-extrabold tracking-tight transition-colors duration-400 ${
-                  scrolled ? "text-black" : "text-white"
-                }`}
+                className="text-[22px] font-extrabold tracking-tight text-white"
+                style={{
+                  textShadow: '0 0 20px rgba(153, 69, 255, 0.5)'
+                }}
               >
                 UPLUS
               </span>
@@ -54,30 +55,22 @@ export default function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-[11px] font-semibold tracking-[0.15em] transition-all duration-300 hover:opacity-100 ${
-                    scrolled
-                      ? "text-black/60 hover:text-black"
-                      : "text-white/60 hover:text-white"
-                  }`}
+                  className="text-[11px] font-semibold tracking-[0.15em] transition-all duration-300 text-white/60 hover:text-white"
                 >
                   {link.label}
                 </a>
               ))}
 
-              <div className="w-px h-4 bg-current opacity-20 mx-1" />
+              <div className="w-px h-4 bg-white/20 mx-1" />
 
-              <span
-                className={`text-[10px] font-bold tracking-[0.2em] cursor-pointer transition-colors duration-300 ${
-                  scrolled ? "text-black/40" : "text-white/40"
-                }`}
-              >
+              <span className="text-[10px] font-bold tracking-[0.2em] cursor-pointer text-white/40 hover:text-white/60 transition-colors duration-300">
                 KR / EN
               </span>
 
               <PremiumButton
                 href="#contact"
-                variant={scrolled ? "primary" : "outline"}
-                className="!text-[10px] !px-6 !py-2.5"
+                variant="outline"
+                className="!text-[10px] !px-6 !py-2.5 glass !border-purple-500/50 hover:!bg-purple-500/20 !text-white"
               >
                 문의하기
               </PremiumButton>
@@ -90,21 +83,17 @@ export default function Header() {
               aria-label="메뉴"
             >
               <span
-                className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
+                className={`block w-5 h-[1.5px] transition-all duration-300 origin-center bg-white ${
                   mobileOpen
-                    ? "rotate-45 translate-y-[3.25px] bg-black"
-                    : scrolled
-                    ? "bg-black"
-                    : "bg-white"
+                    ? "rotate-45 translate-y-[3.25px]"
+                    : ""
                 }`}
               />
               <span
-                className={`block w-5 h-[1.5px] transition-all duration-300 origin-center ${
+                className={`block w-5 h-[1.5px] transition-all duration-300 origin-center bg-white ${
                   mobileOpen
-                    ? "-rotate-45 -translate-y-[3.25px] bg-black"
-                    : scrolled
-                    ? "bg-black"
-                    : "bg-white"
+                    ? "-rotate-45 -translate-y-[3.25px]"
+                    : ""
                 }`}
               />
             </button>
@@ -112,22 +101,25 @@ export default function Header() {
         </Container>
       </motion.header>
 
-      {/* Mobile Menu — HYBE full-screen overlay */}
+      {/* Mobile Menu — Solana full-screen overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-white flex flex-col justify-center px-8"
+            className="fixed inset-0 z-40 bg-black flex flex-col justify-center px-8"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <nav className="space-y-2">
+            {/* Gradient orb */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px]" />
+            
+            <nav className="space-y-2 relative z-10">
               {navLinks.map((link, i) => (
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  className="block text-[2.5rem] font-bold text-black tracking-tight leading-tight py-1"
+                  className="block text-[2.5rem] font-bold text-white tracking-tight leading-tight py-1 hover:text-purple-400 transition-colors"
                   initial={{ y: 40, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ delay: 0.15 + i * 0.04, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -138,12 +130,12 @@ export default function Header() {
               ))}
             </nav>
             <motion.div
-              className="mt-12"
+              className="mt-12 relative z-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              <PremiumButton href="#contact" variant="primary">
+              <PremiumButton href="#contact" variant="outline" className="glass !border-purple-500/50 hover:!bg-purple-500/20 !text-white">
                 프로젝트 상담
               </PremiumButton>
             </motion.div>

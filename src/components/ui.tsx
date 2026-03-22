@@ -1,7 +1,7 @@
 export function SectionLabel({ en, className }: { en: string; className?: string }) {
   return (
     <span
-      className={`micro-label text-gray block mb-8 ${className ?? ""}`}
+      className={`micro-label text-white/40 block mb-8 ${className ?? ""}`}
     >
       {en}
     </span>

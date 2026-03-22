@@ -70,14 +70,14 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Image with HYBE-style hover */}
-      <div className="relative overflow-hidden">
+      {/* Image with Solana-style hover */}
+      <div className="relative overflow-hidden rounded-2xl">
         <div className={`img-placeholder w-full ${project.aspect} transition-transform duration-700 group-hover:scale-105`}>
           <span className="text-center px-4 text-xs">{project.image}</span>
         </div>
 
-        {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-500 flex items-center justify-center">
+        {/* Gradient overlay on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-purple-900/0 to-purple-900/0 group-hover:from-purple-900/80 group-hover:to-transparent transition-all duration-500 flex items-center justify-center">
           <span className="text-white text-xs font-bold tracking-[0.3em] uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500">
             VIEW PROJECT
           </span>
@@ -88,17 +88,17 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
       <div className="mt-5 flex items-start justify-between gap-4">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <span className="micro-label text-gray">{project.sector}</span>
-            <span className="text-light-gray text-xs">·</span>
-            <span className="micro-label text-mid-gray">{project.location}</span>
+            <span className="micro-label text-cyan-400">{project.sector}</span>
+            <span className="text-white/20 text-xs">·</span>
+            <span className="micro-label text-white/40">{project.location}</span>
           </div>
-          <h3 className="text-lg font-bold text-black tracking-tight leading-snug">
+          <h3 className="text-lg font-bold text-white tracking-tight leading-snug">
             {project.title}
           </h3>
-          <p className="text-sm text-gray mt-1">{project.type}</p>
+          <p className="text-sm text-white/50 mt-1">{project.type}</p>
         </div>
-        <div className="mt-1 shrink-0 w-8 h-8 border border-light-gray flex items-center justify-center group-hover:bg-black group-hover:border-black transition-all duration-400">
-          <svg className="w-3 h-3 text-charcoal group-hover:text-white transition-colors duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+        <div className="mt-1 shrink-0 w-8 h-8 border border-white/10 flex items-center justify-center group-hover:bg-purple-500 group-hover:border-purple-500 transition-all duration-400 rounded-md">
+          <svg className="w-3 h-3 text-white/50 group-hover:text-white transition-colors duration-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
             <path d="M7 17L17 7M17 7H7M17 7V17" />
           </svg>
         </div>
@@ -109,14 +109,26 @@ function ProjectCard({ project, index }: { project: (typeof projects)[0]; index:
 
 export default function Portfolio() {
   return (
-    <section id="portfolio" className="py-[var(--spacing-section)] bg-off-white">
-      <Container>
+    <section id="portfolio" className="py-[var(--spacing-section)] bg-black relative overflow-hidden">
+      {/* Gradient orbs */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[80px]" />
+      
+      <Container className="relative z-10">
         <div className="mb-20">
           <Reveal>
             <SectionLabel en="FEATURED PROJECTS" />
           </Reveal>
           <TextReveal delay={0.1}>
-            <h2 className="heading-display text-black">
+            <h2 
+              className="heading-display"
+              style={{
+                background: 'linear-gradient(135deg, #9945FF 0%, #14F195 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
               포트폴리오
             </h2>
           </TextReveal>

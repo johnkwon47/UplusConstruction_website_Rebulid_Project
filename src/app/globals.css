@@ -1,32 +1,42 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════
-   UPLUS Construction — HYBE-inspired Design
-   Bold / Black-White / Modern Korean Corporate
+   UPLUS Construction — Solana-inspired Design
+   Vibrant Gradients / Dark Mode / Web3 Aesthetic
    ═══════════════════════════════════════════ */
 
 @theme inline {
-  /* ── Color Palette: High contrast B&W ── */
+  /* ── Solana Color Palette ── */
+  --color-purple: #9945FF;
+  --color-purple-dark: #7d2fd6;
+  --color-purple-light: #b565ff;
+  --color-cyan: #14F195;
+  --color-cyan-dark: #0dd47a;
+  --color-cyan-light: #5ff5b1;
+  --color-pink: #E933FF;
+  --color-blue: #00D4FF;
+  --color-green: #19FB9B;
+  
+  /* Base colors */
   --color-white: #FFFFFF;
-  --color-off-white: #F7F7F7;
-  --color-light-gray: #EEEEEE;
-  --color-mid-gray: #BBBBBB;
-  --color-gray: #888888;
-  --color-dark-gray: #555555;
-  --color-charcoal: #333333;
-  --color-near-black: #111111;
+  --color-off-white: #F0F0F0;
+  --color-gray-100: #E5E5E5;
+  --color-gray-200: #CCCCCC;
+  --color-gray-300: #999999;
+  --color-gray-400: #666666;
+  --color-gray-500: #444444;
+  --color-gray-600: #2A2A2A;
+  --color-gray-700: #1A1A1A;
+  --color-gray-800: #141414;
+  --color-gray-900: #0A0A0A;
   --color-black: #000000;
 
-  /* Accent — sparingly used */
-  --color-accent: #0055FF;
-  --color-accent-hover: #0044CC;
-
   /* Functional aliases */
-  --color-background: var(--color-white);
-  --color-foreground: var(--color-black);
-  --color-muted: var(--color-gray);
-  --color-border: var(--color-light-gray);
-  --color-surface: var(--color-off-white);
+  --color-background: #0A0A0A;
+  --color-foreground: #FFFFFF;
+  --color-muted: var(--color-gray-300);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-surface: rgba(255, 255, 255, 0.05);
 
   /* ── Typography ── */
   --font-sans: var(--font-geist-sans), "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
@@ -39,8 +49,8 @@
 
 /* ── Base ── */
 :root {
-  --background: #FFFFFF;
-  --foreground: #000000;
+  --background: #0A0A0A;
+  --foreground: #FFFFFF;
   scroll-behavior: smooth;
 }
 
@@ -54,44 +64,43 @@ body {
 }
 
 ::selection {
-  background: #000;
+  background: var(--color-purple);
   color: #fff;
 }
 
-/* ── Typography: Bold, HYBE-style ── */
+/* ── Typography: Modern, Solana-style ── */
 .heading-hero {
-  font-size: clamp(3.5rem, 8vw, 8rem);
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  font-weight: 800;
-  text-transform: uppercase;
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 
 .heading-display {
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
-  line-height: 1.0;
-  letter-spacing: -0.03em;
+  font-size: clamp(2.25rem, 5.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   font-weight: 700;
 }
 
 .heading-xl {
-  font-size: clamp(2rem, 4.5vw, 3.5rem);
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  font-size: clamp(1.875rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   font-weight: 700;
 }
 
 .heading-lg {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.5rem, 2.8vw, 2.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
   font-weight: 600;
 }
 
 .heading-md {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+  font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
   font-weight: 600;
 }
 
@@ -117,17 +126,68 @@ body {
 /* ── Divider ── */
 .divider {
   height: 1px;
-  background: var(--color-light-gray);
+  background: rgba(255, 255, 255, 0.1);
   width: 100%;
 }
 
-/* ── Image Placeholder: darker, modern ── */
+/* ── Solana Gradients ── */
+.gradient-purple-cyan {
+  background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-cyan) 100%);
+}
+
+.gradient-purple-pink {
+  background: linear-gradient(135deg, var(--color-purple) 0%, var(--color-pink) 100%);
+}
+
+.gradient-cyan-blue {
+  background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-blue) 100%);
+}
+
+.gradient-radial-purple {
+  background: radial-gradient(circle at 30% 50%, rgba(153, 69, 255, 0.3) 0%, transparent 50%);
+}
+
+.gradient-radial-cyan {
+  background: radial-gradient(circle at 70% 50%, rgba(20, 241, 149, 0.2) 0%, transparent 50%);
+}
+
+/* ── Glow Effects ── */
+.text-glow-purple {
+  text-shadow: 0 0 40px rgba(153, 69, 255, 0.8), 0 0 80px rgba(153, 69, 255, 0.4);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 40px rgba(20, 241, 149, 0.8), 0 0 80px rgba(20, 241, 149, 0.4);
+}
+
+.glow-purple {
+  box-shadow: 0 0 60px rgba(153, 69, 255, 0.4), 0 0 100px rgba(153, 69, 255, 0.2);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 60px rgba(20, 241, 149, 0.4), 0 0 100px rgba(20, 241, 149, 0.2);
+}
+
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ── Image Placeholder: Solana style ── */
 .img-placeholder {
-  background: linear-gradient(160deg, #222 0%, #111 50%, #1a1a1a 100%);
+  background: linear-gradient(135deg, rgba(153, 69, 255, 0.1) 0%, rgba(20, 241, 149, 0.05) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #555;
+  color: rgba(255, 255, 255, 0.2);
   font-size: 0.65rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -135,15 +195,15 @@ body {
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: var(--color-gray-900);
 }
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 2px;
+  background: var(--color-purple);
+  border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--color-purple-light);
 }

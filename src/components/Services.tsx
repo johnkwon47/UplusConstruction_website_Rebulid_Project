@@ -60,43 +60,45 @@ function ServiceBlock({ service, index }: { service: (typeof services)[0]; index
   return (
     <motion.div
       ref={ref}
-      className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 py-16 lg:py-24 border-t border-light-gray"
-      initial={{ opacity: 0 }}
-      animate={isInView ? { opacity: 1 } : {}}
+      className="glass rounded-3xl p-8 lg:p-12 mb-8"
+      initial={{ opacity: 0, y: 40 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      {/* Number + Label */}
-      <div className="lg:col-span-2">
-        <span className="text-[5rem] lg:text-[6rem] font-extrabold text-light-gray leading-none tracking-tighter block">
-          {service.number}
-        </span>
-      </div>
-
-      {/* Content */}
-      <div className={`lg:col-span-4 ${index % 2 === 0 ? "lg:col-start-3" : "lg:col-start-3"}`}>
-        <span className="micro-label text-gray block mb-3">{service.en}</span>
-        <h3 className="heading-xl text-black mb-5">{service.ko}</h3>
-        <p className="text-body-lg text-dark-gray leading-relaxed mb-8">{service.desc}</p>
-
-        <div className="space-y-2.5">
-          {service.capabilities.map((cap) => (
-            <div key={cap} className="flex items-start gap-3">
-              <span className="w-[3px] h-[3px] rounded-full bg-black mt-2.5 shrink-0" />
-              <span className="text-body text-charcoal">{cap}</span>
-            </div>
-          ))}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0">
+        {/* Number + Label */}
+        <div className="lg:col-span-2">
+          <span className="text-[4rem] lg:text-[5rem] font-extrabold text-purple-500/30 leading-none tracking-tighter block">
+            {service.number}
+          </span>
         </div>
-      </div>
 
-      {/* Image */}
-      <div className="lg:col-span-5 lg:col-start-8">
-        <motion.div
-          className="img-placeholder aspect-[4/3] w-full overflow-hidden"
-          whileHover={{ scale: 1.02 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="text-center px-6 text-xs">{service.image}</span>
-        </motion.div>
+        {/* Content */}
+        <div className={`lg:col-span-4 ${index % 2 === 0 ? "lg:col-start-3" : "lg:col-start-3"}`}>
+          <span className="micro-label text-purple-400 block mb-3">{service.en}</span>
+          <h3 className="heading-xl text-white mb-5">{service.ko}</h3>
+          <p className="text-body-lg text-white/70 leading-relaxed mb-8">{service.desc}</p>
+
+          <div className="space-y-2.5">
+            {service.capabilities.map((cap) => (
+              <div key={cap} className="flex items-start gap-3">
+                <span className="w-[3px] h-[3px] rounded-full bg-cyan-400 mt-2.5 shrink-0" />
+                <span className="text-body text-white/60">{cap}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Image */}
+        <div className="lg:col-span-5 lg:col-start-8">
+          <motion.div
+            className="img-placeholder aspect-[4/3] w-full overflow-hidden rounded-2xl"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="text-center px-6 text-xs">{service.image}</span>
+          </motion.div>
+        </div>
       </div>
     </motion.div>
   );
@@ -104,19 +106,30 @@ function ServiceBlock({ service, index }: { service: (typeof services)[0]; index
 
 export default function Services() {
   return (
-    <section id="services" className="py-[var(--spacing-section)] bg-off-white">
-      <Container>
+    <section id="services" className="py-[var(--spacing-section)] bg-black relative overflow-hidden">
+      {/* Gradient orbs */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-400/10 rounded-full blur-[100px]" />
+      
+      <Container className="relative z-10">
         <div className="mb-20">
           <Reveal>
             <SectionLabel en="WHAT WE DO" />
           </Reveal>
           <TextReveal delay={0.1}>
-            <h2 className="heading-display text-black">
+            <h2 className="heading-display text-white">
               설계부터 시공까지,
             </h2>
           </TextReveal>
           <TextReveal delay={0.2}>
-            <h2 className="heading-display text-black/25">
+            <h2 
+              className="heading-display"
+              style={{
+                background: 'linear-gradient(135deg, #14F195 0%, #9945FF 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
               통합 솔루션
             </h2>
           </TextReveal>

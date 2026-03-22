@@ -35,14 +35,17 @@ const credentials = [
 
 export default function Credentials() {
   return (
-    <section id="credentials" className="py-[var(--spacing-section)]">
-      <Container>
+    <section id="credentials" className="py-[var(--spacing-section)] bg-black relative overflow-hidden">
+      {/* Gradient orb */}
+      <div className="absolute top-1/2 right-1/3 w-[400px] h-[400px] bg-cyan-400/10 rounded-full blur-[80px]" />
+      
+      <Container className="relative z-10">
         <div className="mb-20">
           <Reveal>
             <SectionLabel en="CREDENTIALS" />
           </Reveal>
           <Reveal delay={0.1}>
-            <h2 className="heading-xl text-black mb-6 max-w-3xl">
+            <h2 className="heading-xl text-white mb-6 max-w-3xl">
               검증된 역량, 신뢰할 수 있는 파트너
             </h2>
           </Reveal>
@@ -52,17 +55,17 @@ export default function Credentials() {
           {credentials.map((group, gi) => (
             <Reveal key={group.category} delay={gi * 0.1}>
               <div>
-                <span className="micro-label text-black block mb-8 pb-4 border-b-2 border-black">
+                <span className="micro-label text-purple-400 block mb-8 pb-4 border-b-2 border-purple-500/30">
                   {group.category}
                 </span>
                 <StaggerContainer className="space-y-5" staggerDelay={0.05}>
                   {group.items.map((item) => (
                     <StaggerItem key={item.name}>
                       <div className="py-1">
-                        <span className="text-[15px] font-semibold text-black block mb-0.5">
+                        <span className="text-[15px] font-semibold text-white block mb-0.5">
                           {item.name}
                         </span>
-                        <span className="text-sm text-gray">{item.desc}</span>
+                        <span className="text-sm text-white/50">{item.desc}</span>
                       </div>
                     </StaggerItem>
                   ))}

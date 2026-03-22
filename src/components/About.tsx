@@ -12,20 +12,31 @@ const metrics = [
 
 export default function About() {
   return (
-    <section id="about" className="py-[var(--spacing-section)]">
-      <Container>
-        {/* Statement block — HYBE bold style */}
+    <section id="about" className="py-[var(--spacing-section)] bg-black relative overflow-hidden">
+      {/* Gradient orb */}
+      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px]" />
+      
+      <Container className="relative z-10">
+        {/* Statement block — Solana style */}
         <div className="mb-24">
           <Reveal>
             <SectionLabel en="ABOUT UPLUS" />
           </Reveal>
           <TextReveal delay={0.1}>
-            <h2 className="heading-display text-black max-w-4xl">
+            <h2 className="heading-display text-white max-w-4xl">
               신뢰를 설계하고,
             </h2>
           </TextReveal>
           <TextReveal delay={0.2}>
-            <h2 className="heading-display text-black/30 max-w-4xl">
+            <h2 
+              className="heading-display max-w-4xl"
+              style={{
+                background: 'linear-gradient(135deg, #9945FF 0%, #14F195 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
               정밀함을 시공합니다.
             </h2>
           </TextReveal>
@@ -36,7 +47,7 @@ export default function About() {
           {/* Left — text */}
           <div className="lg:col-span-5 lg:col-start-1">
             <Reveal delay={0.1}>
-              <p className="text-body-lg text-dark-gray leading-relaxed mb-6">
+              <p className="text-body-lg text-white/70 leading-relaxed mb-6">
                 유플러스건설은 제약·바이오·식품·물류 산업시설에 특화된
                 설계·시공 전문기업입니다. HACCP, GMP, 클린룸, HVAC 등
                 고도의 기술력이 요구되는 특수환경 건설 분야에서 축적된
@@ -45,7 +56,7 @@ export default function About() {
               </p>
             </Reveal>
             <Reveal delay={0.2}>
-              <p className="text-body-lg text-gray leading-relaxed">
+              <p className="text-body-lg text-white/50 leading-relaxed">
                 우리는 단순한 시공사가 아닌, 산업 공간의 본질을 이해하는
                 기술 파트너입니다. 공정의 흐름, 환경 제어, 규제 적합성—
                 모든 요소를 통합적으로 설계하여, 고객의 생산성과 안전성을
@@ -67,17 +78,17 @@ export default function About() {
           </div>
         </div>
 
-        {/* Metrics — bold numbers, HYBE style */}
+        {/* Metrics — bold numbers, Solana style */}
         <Divider className="mt-28 mb-16" />
         <StaggerContainer className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerDelay={0.08}>
           {metrics.map((m) => (
             <StaggerItem key={m.en}>
               <div>
-                <span className="text-[3.5rem] md:text-[4.5rem] font-extrabold text-black leading-none tracking-tighter block">
+                <span className="text-[3.5rem] md:text-[4.5rem] font-extrabold text-white leading-none tracking-tighter block">
                   {m.number}
                 </span>
-                <span className="micro-label text-gray block mt-3 mb-1">{m.en}</span>
-                <span className="text-sm text-dark-gray">{m.ko}</span>
+                <span className="micro-label text-white/40 block mt-3 mb-1">{m.en}</span>
+                <span className="text-sm text-white/60">{m.ko}</span>
               </div>
             </StaggerItem>
           ))}

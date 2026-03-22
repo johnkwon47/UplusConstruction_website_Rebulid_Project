@@ -14,8 +14,11 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-[var(--spacing-section)] bg-black text-white">
-      <Container>
+    <section id="process" className="py-[var(--spacing-section)] bg-black text-white relative overflow-hidden">
+      {/* Gradient orbs */}
+      <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[100px]" />
+      
+      <Container className="relative z-10">
         <div className="mb-20">
           <Reveal>
             <SectionLabel en="OUR PROCESS" className="!text-gray" />
@@ -26,7 +29,15 @@ export default function Process() {
             </h2>
           </TextReveal>
           <TextReveal delay={0.2}>
-            <h2 className="heading-display text-white/20">
+            <h2 
+              className="heading-display"
+              style={{
+                background: 'linear-gradient(135deg, #14F195 0%, #9945FF 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
               확실한 결과
             </h2>
           </TextReveal>

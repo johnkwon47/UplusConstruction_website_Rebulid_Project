@@ -8,75 +8,110 @@ const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export default function Hero() {
   return (
-    <section className="relative h-screen flex items-end overflow-hidden bg-black">
-      {/* Background image placeholder */}
-      <div className="absolute inset-0 img-placeholder">
-        <span className="text-white/20 text-xs tracking-widest">
-          HERO — Cinematic aerial of modern industrial facility at twilight
-        </span>
+    <section className="relative h-screen flex items-center overflow-hidden bg-black">
+      {/* Gradient background orbs */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-purple-600/30 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-cyan-400/20 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[80px]" />
       </div>
-      <div className="absolute inset-0 bg-black/50" />
 
-      {/* Animated grain overlay for texture */}
-      <div className="absolute inset-0 opacity-[0.03] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBzdGl0Y2hUaWxlcz0ic3RpdGNoIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]" />
+      {/* Grid overlay */}
+      <div 
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)`,
+          backgroundSize: '50px 50px'
+        }}
+      />
 
-      <Container className="relative z-10 pb-16 md:pb-24">
-        {/* Bold headline block — HYBE style */}
-        <div className="mb-10">
-          <TextReveal delay={0.3}>
-            <h1 className="heading-hero text-white">
-              WE BUILD
+      <Container className="relative z-10">
+        {/* Headline with gradient text */}
+        <div className="mb-12">
+          <TextReveal delay={0.2}>
+            <h1 className="heading-hero text-white mb-4">
+              Building the
             </h1>
           </TextReveal>
-          <TextReveal delay={0.45}>
-            <h1 className="heading-hero text-white">
-              PRECISION
+          <TextReveal delay={0.35}>
+            <h1 
+              className="heading-hero mb-4"
+              style={{
+                background: 'linear-gradient(135deg, #9945FF 0%, #14F195 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
+              Future of
             </h1>
           </TextReveal>
-          <TextReveal delay={0.6}>
-            <h1 className="heading-hero text-white/40">
-              SPACES
+          <TextReveal delay={0.5}>
+            <h1 className="heading-hero text-white/90">
+              Industrial Space
             </h1>
           </TextReveal>
         </div>
 
         {/* Supporting Korean copy */}
-        <Reveal delay={0.9}>
-          <p className="text-body-lg text-white/50 max-w-lg mb-10 leading-relaxed">
-            정밀한 설계와 시공으로, 산업 공간의 기준을 다시 만듭니다.
+        <Reveal delay={0.8}>
+          <p className="text-body-lg text-white/60 max-w-2xl mb-12 leading-relaxed">
+            최첨단 기술과 정밀한 시공으로 산업 공간의 새로운 기준을 제시합니다.
             <br />
-            HACCP · GMP · 클린룸 · HVAC — 턴키 솔루션.
+            스마트 팩토리 · HACCP · GMP · 클린룸 — 통합 솔루션
           </p>
         </Reveal>
 
-        <Reveal delay={1.1}>
+        <Reveal delay={1}>
           <div className="flex flex-col sm:flex-row gap-4">
-            <PremiumButton href="#contact" variant="outline">
-              프로젝트 상담하기
+            <PremiumButton 
+              href="#contact" 
+              variant="outline"
+              className="glass-strong !border-purple-500/50 hover:!bg-purple-500/20 !text-white"
+            >
+              프로젝트 시작하기
             </PremiumButton>
-            <PremiumButton href="#portfolio" variant="ghost" className="!text-white/50 !border-white/30 hover:!text-white">
-              포트폴리오 보기
+            <PremiumButton 
+              href="#portfolio" 
+              variant="ghost" 
+              className="!text-white/70 !border-white/20 hover:!text-white hover:!border-white/40"
+            >
+              프로젝트 둘러보기 →
             </PremiumButton>
           </div>
         </Reveal>
 
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-8 right-6 md:right-16 flex flex-col items-center gap-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          <motion.div
-            className="w-px h-16 bg-white/30"
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: 1 }}
-            transition={{ delay: 1.8, duration: 1, ease }}
-            style={{ transformOrigin: "top" }}
-          />
-          <span className="micro-label text-white/30 text-[9px]">SCROLL</span>
-        </motion.div>
+        {/* Floating stats */}
+        <Reveal delay={1.2}>
+          <div className="mt-20 flex gap-12">
+            <div>
+              <div className="text-4xl font-bold text-white mb-1">500+</div>
+              <div className="micro-label text-white/40">완료 프로젝트</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-white mb-1">25년</div>
+              <div className="micro-label text-white/40">업계 경력</div>
+            </div>
+            <div>
+              <div className="text-4xl font-bold text-white mb-1">99%</div>
+              <div className="micro-label text-white/40">고객 만족도</div>
+            </div>
+          </div>
+        </Reveal>
       </Container>
+
+      {/* Scroll indicator */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8, repeat: Infinity, repeatType: "reverse", repeatDelay: 0.5 }}
+      >
+        <span className="micro-label text-white/30 text-[9px]">SCROLL</span>
+        <motion.div
+          className="w-px h-12 bg-gradient-to-b from-white/50 to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }
