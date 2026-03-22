@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ═══════════════════════════════════════════
+   UPLUS Construction — HYBE-inspired Design
+   Bold / Black-White / Modern Korean Corporate
+   ═══════════════════════════════════════════ */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Color Palette: High contrast B&W ── */
+  --color-white: #FFFFFF;
+  --color-off-white: #F7F7F7;
+  --color-light-gray: #EEEEEE;
+  --color-mid-gray: #BBBBBB;
+  --color-gray: #888888;
+  --color-dark-gray: #555555;
+  --color-charcoal: #333333;
+  --color-near-black: #111111;
+  --color-black: #000000;
+
+  /* Accent — sparingly used */
+  --color-accent: #0055FF;
+  --color-accent-hover: #0044CC;
+
+  /* Functional aliases */
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-black);
+  --color-muted: var(--color-gray);
+  --color-border: var(--color-light-gray);
+  --color-surface: var(--color-off-white);
+
+  /* ── Typography ── */
+  --font-sans: var(--font-geist-sans), "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), "SF Mono", monospace;
+
+  /* ── Spacing ── */
+  --spacing-section: 180px;
+  --spacing-section-sm: 120px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Base ── */
+:root {
+  --background: #FFFFFF;
+  --foreground: #000000;
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #000;
+  color: #fff;
+}
+
+/* ── Typography: Bold, HYBE-style ── */
+.heading-hero {
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.heading-display {
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+}
+
+.heading-xl {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.heading-lg {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.heading-md {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.text-body-lg {
+  font-size: clamp(1rem, 1.3vw, 1.125rem);
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+.text-body {
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  line-height: 1.75;
+  font-weight: 400;
+}
+
+.micro-label {
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: var(--color-light-gray);
+  width: 100%;
+}
+
+/* ── Image Placeholder: darker, modern ── */
+.img-placeholder {
+  background: linear-gradient(160deg, #222 0%, #111 50%, #1a1a1a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
